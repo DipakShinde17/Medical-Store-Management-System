@@ -1,0 +1,280 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="container-fluid py-4">
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+
+<div>
+
+<h2 class="fw-bold">
+
+<i class="bi bi-person-circle text-primary"></i>
+
+Store Profile
+
+</h2>
+
+<p class="text-muted">
+
+View your store information
+
+</p>
+
+</div>
+
+<a href="{% url 'edit_profile' %}" class="btn btn-success px-4">
+
+<i class="bi bi-pencil-square"></i>
+
+Edit Profile
+
+</a>
+
+</div>
+
+<div class="card shadow-lg border-0 rounded-4">
+
+<div class="row g-0">
+
+<div class="col-lg-4 bg-light text-center p-5">
+
+<!-- <img
+
+src="{% static 'images/logo.png' %}"
+
+width="170"
+
+class="mb-4"> -->
+
+<img
+src="{% static 'images/logo.png' %}"
+class="img-fluid rounded-circle shadow mb-4"
+style="width:220px;height:220px;object-fit:cover;">
+
+<h3 class="fw-bold text-success">
+
+{{ profile.store_name }}
+
+</h3>
+
+<p class="text-muted">
+
+Medical Store
+
+</p>
+
+</div>
+
+<div class="col-lg-8 p-5">
+
+    <div class="row mb-4">
+
+<div class="col-md-6 mb-4">
+
+<div class="profile-item">
+
+<i class="bi bi-person-fill text-primary"></i>
+
+<span>
+
+Owner
+
+</span>
+
+<h5>
+
+{{ profile.owner_name }}
+
+</h5>
+
+</div>
+
+</div>
+
+<div class="col-md-6 mb-4">
+
+<div class="profile-item">
+
+<i class="bi bi-telephone-fill text-success"></i>
+
+<span>
+
+Phone
+
+</span>
+
+<h5>
+
+{{ profile.phone }}
+
+</h5>
+
+</div>
+
+</div>
+
+<div class="col-md-6 mb-4">
+
+<div class="profile-item">
+
+<i class="bi bi-envelope-fill text-danger"></i>
+
+<span>
+
+Email
+
+</span>
+
+<h5>
+
+{{ profile.email }}
+
+</h5>
+
+</div>
+
+</div>
+
+<div class="col-md-6 mb-4">
+
+<div class="profile-item">
+
+<i class="bi bi-receipt text-warning"></i>
+
+<span>
+
+GST Number
+
+</span>
+
+<h5>
+
+{{ profile.gst_number }}
+
+</h5>
+
+</div>
+
+</div>
+
+<div class="col-md-12">
+
+<div class="profile-item">
+
+<i class="bi bi-geo-alt-fill text-info"></i>
+
+<span>
+
+Address
+
+</span>
+
+<h5>
+
+{{ profile.address }}
+
+</h5>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="row mt-4">
+
+<div class="col-md-3">
+
+<div class="info-card border-start border-success border-5">
+
+<h5>
+
+🛡 Trusted Store
+
+</h5>
+
+<p>
+
+Since 2024
+
+</p>
+
+</div>
+
+</div>
+
+<div class="col-md-3">
+
+<div class="info-card border-start border-primary border-5">
+
+<h5>
+
+⭐ Quality
+
+</h5>
+
+<p>
+
+100% Customer Satisfaction
+
+</p>
+
+</div>
+
+</div>
+
+<div class="col-md-3">
+
+<div class="info-card border-start border-warning border-5">
+
+<h5>
+
+💊 Medicines
+
+</h5>
+
+<p>
+
+245+
+
+</p>
+
+</div>
+
+</div>
+
+<div class="col-md-3">
+
+<div class="info-card border-start border-danger border-5">
+
+<h5>
+
+❤️ Mission
+
+</h5>
+
+<p>
+
+Better Health
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

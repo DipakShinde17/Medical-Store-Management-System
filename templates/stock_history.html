@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2 class="mb-4">
+    📦 Stock History
+</h2>
+
+<table class="table table-bordered table-striped">
+
+    <thead class="table-dark">
+
+        <tr>
+
+            <th>ID</th>
+            <th>Medicine</th>
+            <th>Sold Qty</th>
+            <th>Remaining Stock</th>
+            <th>Date</th>
+
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+        {% for item in history %}
+
+        <tr>
+
+            <td>{{ item.id }}</td>
+
+            <td>
+                {{ item.medicine.medicine_name }}
+            </td>
+
+            <td>
+                {{ item.sold_quantity }}
+            </td>
+
+            <td>
+                {{ item.remaining_stock }}
+            </td>
+
+            <td>
+                {{ item.date }}
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </tbody>
+
+</table>
+
+{% endblock %}

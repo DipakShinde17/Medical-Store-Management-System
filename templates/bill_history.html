@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Bill History</h2>
+
+<table class="table table-striped">
+
+<tr>
+
+<th>ID</th>
+<th>Customer</th>
+<th>Date</th>
+<th>Total</th>
+<th>Action</th>
+
+</tr>
+
+{% for bill in bills %}
+
+<tr>
+
+<td>{{ bill.id }}</td>
+
+<td>
+{{ bill.customer_name }}
+</td>
+
+<td>
+{{ bill.bill_date }}
+</td>
+
+<td>
+₹{{ bill.total_amount }}
+</td>
+
+<td>
+<td>
+
+<a href="/invoice/{{bill.id}}/"
+class="btn btn-success btn-sm">
+View Bill
+</a>
+
+<button
+class="btn btn-danger btn-sm"
+data-bs-toggle="modal"
+data-bs-target="#deleteModal{{bill.id}}">
+
+Delete
+
+</button>
+
+</td>
+
+</td>
+
+</td>
+
+</tr>
+<div class="modal fade"
+id="deleteModal{{bill.id}}"
+tabindex="-1">
+
+<div class="modal-dialog">
+
+<div class="modal-content">
+
+<div class="modal-header bg-danger text-white">
+
+<h5 class="modal-title">
+Delete Bill
+</h5>
+
+<button
+type="button"
+class="btn-close"
+data-bs-dismiss="modal">
+</button>
+
+</div>
+
+<div class="modal-body">
+
+Are you sure you want to delete
+Bill #{{bill.id}} ?
+
+</div>
+
+<div class="modal-footer">
+
+<button
+type="button"
+class="btn btn-secondary"
+data-bs-dismiss="modal">
+
+Cancel
+
+</button>
+
+<a href="/delete-bill/{{bill.id}}/"
+class="btn btn-danger">
+
+Delete Bill
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+{% endfor %}
+
+</table>
+
+{% endblock %}

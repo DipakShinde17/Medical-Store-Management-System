@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="card shadow p-4">
+
+<h2>
+SHINDE MEDICAL STORE
+</h2>
+
+<p>
+
+GST No :
+27ABCDE1234F1Z5
+
+<br>
+
+Phone :
+9309772996
+
+<br>
+
+Address :
+Pune Maharashtra
+
+</p>
+
+<hr>
+
+<h4>
+
+Customer :
+{{ bill.customer_name }}
+
+</h4>
+
+<p>
+
+Date :
+{{ bill.bill_date }}
+
+</p>
+
+<table class="table">
+
+<tr>
+
+<th>Medicine</th>
+<th>Qty</th>
+<th>Price</th>
+
+</tr>
+
+{% for item in items %}
+
+<tr>
+
+<td>
+{{ item.medicine.medicine_name }}
+</td>
+
+<td>
+{{ item.quantity }}
+</td>
+
+<td>
+₹{{ item.price }}
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+<h3>
+
+Total :
+
+<div class="text-end">
+
+<p>
+Subtotal :
+₹{{ bill.total_amount }}
+</p>
+
+<p>
+GST ({{ setting.gst_percentage }}%) : ₹{{ bill.gst_amount }}
+</p>
+
+<h2>
+
+Grand Total :
+₹{{ bill.grand_total }}
+
+</h2>
+
+</div>
+
+
+</h3>
+
+<div class="text-center mt-4">
+
+    <button
+        onclick="window.print()"
+        class="btn btn-primary">
+
+        Print Bill
+
+    </button>
+
+    <br><br>
+
+    <a href="/invoice-pdf/{{bill.id}}/"
+       class="btn btn-danger">
+
+       Download Bill
+
+    </a>
+
+</div>
+
+
+</div>
+
+{% endblock %}

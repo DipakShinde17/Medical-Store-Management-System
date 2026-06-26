@@ -1,0 +1,310 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container-fluid px-0"></div>
+
+<h1 class="mb-4">
+    📊 Dashboard
+</h1>
+
+<div class="row">
+
+    <!-- Total Medicines -->
+
+    <div class="col-md-3 mb-3">
+
+        <div class="card bg-primary text-white shadow-lg border-0">
+
+            <div class="card-body text-center">
+
+                <h5>
+                    💊 Total Medicines
+                </h5>
+
+                <h1>
+                    {{ medicine_count }}
+                </h1>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Total Suppliers -->
+
+    <div class="col-md-3 mb-3">
+
+        <div class="card bg-success text-white shadow-lg border-0">
+
+            <div class="card-body text-center">
+
+                <h5>
+                    🚚 Total Suppliers
+                </h5>
+
+                <h1>
+                    {{ supplier_count }}
+                </h1>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Total Bills -->
+
+    <div class="col-md-3 mb-3">
+
+        <div class="card bg-warning shadow-lg border-0">
+
+            <div class="card-body text-center">
+
+                <h5>
+                    🧾 Total Bills
+                </h5>
+
+                <h1>
+                    {{ bill_count }}
+                </h1>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    
+    <div class="col-md-3 mb-3">
+
+        <div class="card bg-danger text-white shadow-lg border-0">
+
+            <div class="card-body text-center">
+
+                <h5>
+                    ⚠️ Low Stock
+                </h5>
+
+                <h1>
+                    {{ low_stock }}
+                </h1>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+
+
+
+<!-- Total Sales -->
+
+<div class="row mt-4">
+
+    <div class="col-md-12">
+
+        <div class="card shadow-lg border-0">
+
+            <div class="card-body text-center">
+
+                <h4>
+                    💰 Total Sales
+                </h4>
+
+                <h1 class="text-success">
+
+                    ₹ {{ total_sales }}
+
+                </h1>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- Quick Actions -->
+
+<div class="row mt-4">
+
+    <div class="col-md-4">
+
+        <div class="card shadow border-0">
+
+            <div class="card-body text-center">
+
+                <h5>Medicine Management</h5>
+
+                <a href="/medicines/"
+                   class="btn btn-primary">
+
+                    Open
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="card shadow border-0">
+
+            <div class="card-body text-center">
+
+                <h5>Supplier Management</h5>
+
+                <a href="/suppliers/"
+                   class="btn btn-success">
+
+                    Open
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="card shadow border-0">
+
+            <div class="card-body text-center">
+
+                <h5>Billing System</h5>
+
+                <a href="/billing/"
+                   class="btn btn-warning">
+
+                    Open
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Top Selling Medicines -->
+
+<div class="row mt-4">
+
+    <div class="col-md-12">
+
+        <div class="card border-success shadow-lg">
+
+            <div class="card-header bg-success text-white">
+
+                🏆 Top Selling Medicines
+
+            </div>
+
+            <div class="card-body">
+
+                {% for med in top_medicines %}
+
+                <div class="d-flex justify-content-between border-bottom p-2">
+
+                    <strong>
+
+                        {{ med.medicine__medicine_name }}
+
+                    </strong>
+
+                    <span class="badge bg-success fs-6">
+
+                        Sold : {{ med.total_sold }}
+
+                    </span>
+
+                </div>
+
+                {% empty %}
+
+                <h5 class="text-danger">
+
+                    No Sales Found
+
+                </h5>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Low Stock Medicines -->
+
+<div class="row mt-4">
+
+    <div class="col-md-12">
+
+        <div class="card border-danger shadow-lg">
+
+            <div class="card-header bg-danger text-white">
+
+                ⚠️ Low Stock Medicines
+
+            </div>
+
+            <div class="card-body">
+
+                {% for med in low_stock_medicines %}
+
+                <div class="d-flex justify-content-between border-bottom p-2">
+
+                    <strong>
+
+                        {{ med.medicine_name }}
+
+                    </strong>
+
+                    <span class="badge bg-danger fs-6">
+
+                        Qty : {{ med.quantity }}
+
+                    </span>
+
+                </div>
+
+                {% empty %}
+
+                <h5 class="text-success">
+
+                    ✅ No Low Stock Medicines
+
+                </h5>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+
+
+{% endblock %}

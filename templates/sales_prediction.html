@@ -1,0 +1,190 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+
+<h2 class="mb-4">
+
+🤖 AI Sales Prediction
+
+</h2>
+
+<div class="card shadow">
+
+<div class="card-body">
+
+<form method="POST">
+
+{% csrf_token %}
+
+<label class="form-label">
+
+Select Medicine
+
+</label>
+
+<select
+class="form-select"
+name="medicine">
+
+{% for medicine in medicines %}
+
+<option value="{{ medicine.id }}">
+
+{{ medicine.medicine_name }}
+
+</option>
+
+{% endfor %}
+
+</select>
+
+<br>
+
+<button
+class="btn btn-primary">
+
+Predict Sales
+
+</button>
+
+</form>
+
+{% if prediction %}
+
+<div class="card mt-4 shadow">
+
+<div class="card-body">
+
+
+
+    {% if selected %}
+
+<div class="card shadow mt-4">
+
+    <div class="card-header bg-primary text-white">
+
+        🤖 AI Prediction
+
+    </div>
+
+    <div class="card-body">
+
+        <h5>Medicine : {{ selected.medicine_name }}</h5>
+
+        <p><b>Current Stock :</b> {{ selected.quantity }}</p>
+
+        <p><b>Predicted Next Month :</b> {{ prediction }}</p>
+
+        <p><b>Confidence :</b> {{ confidence }}</p>
+
+        <p><b>Recommendation :</b></p>
+
+        <div class="alert alert-info">
+
+            {{ recommendation }}
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endif %}
+
+{% if monthly_data %}
+
+<div class="card mt-4 shadow">
+
+    <div class="card-header bg-success text-white">
+
+        📊 Monthly Sales History
+
+    </div>
+
+    <div class="card-body">
+
+        <table class="table table-bordered">
+
+            <thead>
+
+                <tr>
+
+                    <th>Month</th>
+
+                    <th>Units Sold</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for row in monthly_data %}
+
+                <tr>
+
+                    <td>{{ row.month|date:"F Y" }}</td>
+
+                    <td>{{ row.total_qty }}</td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endif %}
+<h3>
+
+🤖 Prediction Result
+
+</h3>
+
+<hr>
+
+<p>
+
+<b>Medicine :</b>
+
+{{ selected.medicine_name }}
+
+</p>
+
+<p>
+
+<b>Current Stock :</b>
+
+{{ selected.quantity }}
+
+</p>
+
+<p>
+
+<b>Predicted Next Sale :</b>
+
+{{ prediction }}
+
+Units
+
+</p>
+
+</div>
+
+</div>
+
+{% endif %}
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

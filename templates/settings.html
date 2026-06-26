@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+<div class="card shadow border-0">
+
+<div class="card-header bg-primary text-white">
+
+<h3>
+
+⚙️ Application Settings
+
+</h3>
+
+</div>
+
+<div class="card-body">
+
+<form method="POST">
+
+{% csrf_token %}
+
+<div class="row">
+
+<div class="col-md-6 mb-3">
+
+<label>
+
+GST Percentage
+
+</label>
+
+{{ form.gst_percentage }}
+
+</div>
+
+<div class="col-md-6 mb-3">
+
+<label>
+
+Low Stock Alert
+
+</label>
+
+{{ form.low_stock_limit }}
+
+</div>
+
+<div class="col-md-6 mb-3">
+
+<label>
+
+Currency
+
+</label>
+
+{{ form.currency }}
+
+</div>
+
+<div class="col-md-6 mb-3">
+
+<label>
+
+Email Notification
+
+</label>
+
+{{ form.email_notification }}
+
+</div>
+
+<div class="col-md-6 mb-3">
+
+<label>
+
+Dark Mode
+
+</label>
+
+{{ form.dark_mode }}
+
+</div>
+
+</div>
+
+<button class="btn btn-success">
+
+💾 Save Settings
+
+</button>
+
+<hr>
+
+<h5 class="mb-3">
+🔐 Security
+</h5>
+
+<a href="{% url 'change_password' %}"
+class="btn btn-warning">
+
+🔑 Change Password
+
+</a>
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

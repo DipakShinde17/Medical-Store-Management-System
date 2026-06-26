@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+<h2 class="mb-4">
+    📥 Inventory Report
+</h2>
+<div class="mb-3">
+
+    <a href="{% url 'inventory_report_pdf' %}"
+       class="btn btn-danger">
+
+        📄 Download Inventory PDF
+
+    </a>
+
+</div>
+<div class="row">
+
+    <div class="col-md-3 mb-3">
+        <div class="card bg-primary text-white shadow">
+            <div class="card-body text-center">
+                <h5>Total Medicines</h5>
+                <h2>{{ total_medicines }}</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3 mb-3">
+        <div class="card bg-success text-white shadow">
+            <div class="card-body text-center">
+                <h5>Total Stock</h5>
+                <h2>{{ total_stock }}</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3 mb-3">
+        <div class="card bg-danger text-white shadow">
+            <div class="card-body text-center">
+                <h5>Low Stock</h5>
+                <h2>{{ low_stock }}</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3 mb-3">
+        <div class="card bg-warning shadow">
+            <div class="card-body text-center">
+                <h5>Total Inventory Value</h5>
+                <h2>₹ {{ total_value }}</h2>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="card shadow mt-4">
+
+<div class="card-header bg-dark text-white">
+
+📦 Inventory Details
+
+</div>
+
+<div class="card-body">
+
+<table class="table table-bordered table-hover">
+
+<thead class="table-primary">
+
+<tr>
+
+<th>ID</th>
+
+<th>Medicine</th>
+
+<th>Price</th>
+
+<th>Stock</th>
+
+<th>Total Value</th>
+
+<th>Status</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for medicine in medicines %}
+
+<tr>
+
+<td>{{ medicine.id }}</td>
+
+<td>{{ medicine.medicine_name }}</td>
+
+<td>₹ {{ medicine.price }}</td>
+
+<td>{{ medicine.quantity }}</td>
+
+<td>₹ {{ medicine.price|floatformat:2 }}</td>
+
+<td>
+
+{% if medicine.quantity < 10 %}
+
+<span class="badge bg-danger">
+
+Low Stock
+
+</span>
+
+{% else %}
+
+<span class="badge bg-success">
+
+Available
+
+</span>
+
+{% endif %}
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}
