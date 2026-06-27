@@ -6,8 +6,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-change-this-key'
 
-DEBUG = True
-
+# DEBUG = True
+DEBUG = False
 
 # ALLOWED_HOSTS = []
 ALLOWED_HOSTS = ["*"]
@@ -54,23 +54,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'medical_store.wsgi.application'
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'medical_store_db',
-#         'USER': 'root',
-#         'PASSWORD': 'Pass@123',
-#         'HOST': 'localhost',
-#         'PORT': '3306',
-#     }
-# }
-
-# DATABASES = {
-#     'default': dj_database_url.config(
-#         default='sqlite:///db.sqlite3',
-#         conn_max_age=600
-#     )
-# }
 
 
 DATABASES = {
