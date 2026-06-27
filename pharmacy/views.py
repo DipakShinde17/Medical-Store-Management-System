@@ -235,7 +235,14 @@ def delete_supplier(request, id):
 
 #     return render(request, 'login.html')
 
+from django.contrib.auth.models import User
 
+if not User.objects.filter(username="Dipak").exists():
+    User.objects.create_superuser(
+        username="Dipak",
+        password="12345",
+        email="dipak@gmail.com"
+    )
 
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
